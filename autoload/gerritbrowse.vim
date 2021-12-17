@@ -26,7 +26,7 @@ function! gerritbrowse#FugitiveUrl(...) abort
     return ''
   endif
   let commit = get(opts, 'commit')
-  let body = system(fugitive#repo().git_command() . ' show ' . l:commit)
+  let body = system(FugitiveShellCommand() . ' show ' . l:commit)
   let change_id = substitute(matchstr(body, 'Change-Id: [^\n]*'), 'Change-Id: ', '', '')
   if change_id ==# ''
     return ''
